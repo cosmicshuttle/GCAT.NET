@@ -2,14 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using GCAT.NET.Entities.Ref;
+using GCAT.NET.Entities.Organization;
 using Microsoft.EntityFrameworkCore;
 
-namespace GCAT.NET.Entities.Organization
+namespace GCAT.NET.Entities.LaunchOrigins
 {
-    public class Org
+    public class LaunchSite
     {
         [Key]
-        public string OrgCODE { get; set; }
+        public string LaunchSiteCODE { get; set; }
 
         [Required]
         public bool IsActive { get; set; }
@@ -24,6 +25,13 @@ namespace GCAT.NET.Entities.Organization
 
 
         [Required]
+        public string OrgCODE { get; set; }
+
+        [ForeignKey(nameof(OrgCODE))]
+        public Org Org { get; set; }
+
+
+        [Required]
         public string StateCODE { get; set; }
 
         [ForeignKey(nameof(StateCODE))]
@@ -31,10 +39,10 @@ namespace GCAT.NET.Entities.Organization
 
 
         [Required]
-        public string OrgTypeID { get; set; }
+        public string LaunchSiteTypeID { get; set; }
 
-        [ForeignKey(nameof(OrgTypeID))]
-        public OrgType OrgType { get; set; }
+        [ForeignKey(nameof(LaunchSiteTypeID))]
+        public LaunchSiteType LaunchSiteType { get; set; }
 
 
         [Required]

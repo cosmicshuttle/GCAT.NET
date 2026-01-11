@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using GCAT.NET.Entities.Ref;
 using Microsoft.EntityFrameworkCore;
 
-namespace GCAT.NET.Entities.Organization
+namespace GCAT.NET.Entities.LaunchOrigins
 {
-    public class Org
+    public class LaunchPoint
     {
         [Key]
-        public string OrgCODE { get; set; }
+        public string LaunchPointCODE { get; set; }
 
         [Required]
         public bool IsActive { get; set; }
@@ -24,17 +24,10 @@ namespace GCAT.NET.Entities.Organization
 
 
         [Required]
-        public string StateCODE { get; set; }
+        public string LaunchPointTypeID { get; set; }
 
-        [ForeignKey(nameof(StateCODE))]
-        public State State { get; set; }
-
-
-        [Required]
-        public string OrgTypeID { get; set; }
-
-        [ForeignKey(nameof(OrgTypeID))]
-        public OrgType OrgType { get; set; }
+        [ForeignKey(nameof(LaunchPointTypeID))]
+        public LaunchPointType LaunchPointType { get; set; }
 
 
         [Required]
